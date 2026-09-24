@@ -80,7 +80,7 @@
   .promo a.more{font-size:14px;font-weight:600;white-space:nowrap;border-bottom:1px solid currentColor;}
 
   /* ---------- section shell ---------- */
-  section{padding:96px 0;}
+  section{padding:calc(96px * var(--section-pad-scale,1)) 0;}
   .section-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:44px;gap:20px;flex-wrap:wrap;}
   .section-head .label{font-size:13px;color:var(--accent-deep);margin:0 0 10px;}
   .section-head h2{font-family:var(--serif);font-weight:500;font-size:clamp(26px,3.4vw,36px);margin:0;line-height:1.2;}
@@ -215,6 +215,26 @@
   .fd-kakao .fd-btn{background:#fee500;color:#191919;}
   .fd-call .fd-btn{background:var(--accent-deep);color:#fff;}
   body.edit-mode #floatDock{display:none;}
+  .fd-hide-labels .fd-label{display:none;}
+
+  /* ---------- 텍스트 폰트 크기 조절 툴바 (편집 모드) ---------- */
+  #fontSizeTool{
+    position:fixed;display:none;z-index:600;
+    align-items:center;gap:4px;
+    background:#1a1f26;color:#fff;border-radius:8px;
+    padding:6px 6px;box-shadow:0 8px 22px rgba(0,0,0,.32);
+    font-family:var(--sans);font-size:12.5px;
+  }
+  #fontSizeTool button{
+    border:none;background:rgba(255,255,255,.1);color:#fff;
+    width:26px;height:26px;border-radius:5px;cursor:pointer;font-size:13px;
+    display:flex;align-items:center;justify-content:center;line-height:1;
+  }
+  #fontSizeTool button:hover{background:rgba(255,255,255,.22);}
+  #fontSizeTool .fs-val{min-width:38px;text-align:center;color:#cfe0f0;}
+  #fontSizeTool .fs-reset{font-size:11px;padding:0 8px;width:auto;color:#cfe0f0;}
+  #fontSizeTool .fs-close{color:#9aa6b2;}
+  @media(max-width:640px){ #fontSizeTool{transform:scale(.94);} }
   @media (max-width:640px){
     #floatDock{right:10px;bottom:16px;gap:7px;}
     .fd-btn{width:36px;height:36px;}
@@ -347,7 +367,7 @@
     .nav-cta .btn{padding:8px 11px;font-size:12.5px;white-space:nowrap;border-radius:4px;}
 
     /* 섹션 공통 여백 */
-    section{padding:52px 0;}
+    section{padding:calc(52px * var(--section-pad-scale,1)) 0;}
     .section-head{margin-bottom:22px;gap:8px;}
     .section-head .label{font-size:12px;margin-bottom:6px;}
     .section-head h2{font-size:24px;}
@@ -554,7 +574,11 @@
   "footerNote": "본 사이트는 공식 딜러 개인 브랜딩 페이지이며, BMW Korea와 무관합니다.",
   "ftKakaoText": "카카오 상담",
   "ftBlogText": "블로그",
-  "adminFabText": "⚙ 관리자"
+  "adminFabText": "⚙ 관리자",
+  "sectionSpacingScale": 1,
+  "floatDockPosition": "br",
+  "fdShowLabels": true,
+  "textStyles": {}
 }
 </script>
 
@@ -778,6 +802,14 @@
   </a>
 </nav>
 <div id="editToolbar" style="display:none;"></div>
+
+<div id="fontSizeTool">
+  <button type="button" id="fsMinus" title="글자 작게">A-</button>
+  <span class="fs-val" id="fsVal">16px</span>
+  <button type="button" id="fsPlus" title="글자 크게">A+</button>
+  <button type="button" class="fs-reset" id="fsReset">초기화</button>
+  <button type="button" class="fs-close" id="fsClose">×</button>
+</div>
 
 <div class="modal-overlay" id="modalOverlay">
   <div class="modal" id="modalBox"></div>
@@ -1197,6 +1229,36 @@
     var telNum = (CONTENT.phone||'').replace(/[^0-9+]/g,'');
     fdCall.href = telNum ? 'tel:'+telNum : '#';
     if(telNum) fdCall.removeAttribute('data-empty'); else fdCall.setAttribute('data-empty','1');
+
+    // 섹션 여백
+    document.documentElement.style.setProperty('--section-pad-scale', CONTENT.sectionSpacingScale || 1);
+
+    // 플로팅 연락 버튼 위치 / 말풍선(라벨) 표시
+    (function applyDockPrefs(){
+      var dock = document.getElementById('floatDock');
+      var pos = CONTENT.floatDockPosition || 'br';
+      var FD_POS = {
+        br:{right:'16px',bottom:'20px',left:'',top:''},
+        bl:{left:'16px',bottom:'20px',right:'',top:''},
+        tr:{right:'16px',top:'92px',left:'',bottom:''},
+        tl:{left:'16px',top:'92px',right:'',bottom:''}
+      };
+      if(pos === 'br'){
+        dock.style.right = dock.style.left = dock.style.top = dock.style.bottom = '';
+      } else {
+        var p = FD_POS[pos] || FD_POS.br;
+        dock.style.right = p.right; dock.style.left = p.left; dock.style.top = p.top; dock.style.bottom = p.bottom;
+      }
+      dock.classList.toggle('fd-hide-labels', CONTENT.fdShowLabels === false);
+    })();
+
+    // 편집 모드에서 조절한 글자 크기 반영
+    document.querySelectorAll('[data-path]').forEach(function(el){
+      var p = el.dataset.path;
+      var size = CONTENT.textStyles && CONTENT.textStyles[p];
+      el.style.fontSize = size ? size + 'px' : '';
+    });
+
     renderToolbar();
   }
 
@@ -1338,7 +1400,7 @@
     document.getElementById('tbStockUpload').addEventListener('click', function(){ document.getElementById('hiddenStockInput').click(); });
     document.getElementById('tbSubsidyUpload').addEventListener('click', function(){ document.getElementById('hiddenSubsidyInput').click(); });
     document.getElementById('tbExport').addEventListener('click', exportSite);
-    document.getElementById('tbDone').addEventListener('click', function(){ EDIT = false; render(); });
+    document.getElementById('tbDone').addEventListener('click', function(){ EDIT = false; hideFontTool(); render(); });
   }
 
   /* ---------------- settings modal (non-visual fields) ---------------- */
@@ -1359,6 +1421,18 @@
           '<small>이메일을 새로 넣거나 바꾼 경우 <b>인증 메일 보내기</b>를 누른 뒤, 메일함에서 FormSubmit의 <b>Activate Form</b> 버튼을 눌러야 접수 메일이 옵니다.</small></div>' +
         '<div class="field"><label>환경부 무공해차 통합누리집 링크</label><input type="text" id="setEvUrl" value="'+esc(c.evOfficialUrl)+'"></div>' +
         '<div class="field"><label>관리자 비밀번호 변경</label><input type="password" id="setPw" placeholder="새 비밀번호 (변경 시에만 입력)"></div>' +
+        '<div class="field"><label>섹션 간격(여백)</label><select id="setSpacing" style="width:100%;padding:11px 12px;border-radius:4px;border:1px solid var(--line-soft);">' +
+          '<option value="0.7"'+(c.sectionSpacingScale==0.7?' selected':'')+'>좁게</option>' +
+          '<option value="1"'+(!c.sectionSpacingScale||c.sectionSpacingScale==1?' selected':'')+'>보통</option>' +
+          '<option value="1.3"'+(c.sectionSpacingScale==1.3?' selected':'')+'>넓게</option>' +
+        '</select></div>' +
+        '<div class="field"><label>플로팅 연락 버튼 위치</label><select id="setDockPos" style="width:100%;padding:11px 12px;border-radius:4px;border:1px solid var(--line-soft);">' +
+          '<option value="br"'+((!c.floatDockPosition||c.floatDockPosition=='br')?' selected':'')+'>우측 하단(기본)</option>' +
+          '<option value="bl"'+(c.floatDockPosition=='bl'?' selected':'')+'>좌측 하단</option>' +
+          '<option value="tr"'+(c.floatDockPosition=='tr'?' selected':'')+'>우측 상단</option>' +
+          '<option value="tl"'+(c.floatDockPosition=='tl'?' selected':'')+'>좌측 상단</option>' +
+        '</select></div>' +
+        '<div class="field"><label style="display:flex;align-items:center;gap:8px;font-weight:400;"><input type="checkbox" id="setFdLabels"'+(c.fdShowLabels!==false?' checked':'')+' style="width:auto;">말풍선(버튼 이름표) 표시</label></div>' +
       '</div>' +
       '<div class="modal-actions"><button class="btn btn-dark" id="setSave" style="width:100%;">저장</button></div>';
     document.getElementById('setClose').addEventListener('click', closeModal);
@@ -1400,6 +1474,9 @@
       CONTENT.blogUrl = document.getElementById('setBlog').value.trim();
       CONTENT.serviceFormEmail = document.getElementById('setSvcEmail').value.trim();
       CONTENT.evOfficialUrl = document.getElementById('setEvUrl').value.trim();
+      CONTENT.sectionSpacingScale = parseFloat(document.getElementById('setSpacing').value) || 1;
+      CONTENT.floatDockPosition = document.getElementById('setDockPos').value;
+      CONTENT.fdShowLabels = document.getElementById('setFdLabels').checked;
       var newPw = document.getElementById('setPw').value.trim();
       if(newPw){ localStorage.setItem(ADMIN_PW_KEY, newPw); }
       saveContent();
@@ -1408,6 +1485,61 @@
       toast("설정이 저장되었습니다.");
     });
   }
+
+  /* ---------------- 텍스트 폰트 크기 조절 툴바 ---------------- */
+  var fontTool = document.getElementById('fontSizeTool');
+  var fsCurrentPath = null;
+  function showFontTool(el){
+    fsCurrentPath = el.dataset.path;
+    var rect = el.getBoundingClientRect();
+    var size = parseFloat(getComputedStyle(el).fontSize) || 16;
+    document.getElementById('fsVal').textContent = Math.round(size) + 'px';
+    fontTool.style.display = 'flex';
+    var top = rect.top - 46;
+    if(top < 8) top = rect.bottom + 8;
+    var left = Math.min(Math.max(rect.left, 8), window.innerWidth - 210);
+    fontTool.style.top = top + 'px';
+    fontTool.style.left = left + 'px';
+  }
+  function hideFontTool(){ fontTool.style.display = 'none'; fsCurrentPath = null; }
+  function fsTargetEl(){ return fsCurrentPath ? document.querySelector('[data-path="'+fsCurrentPath+'"]') : null; }
+  function changeFontSize(delta){
+    var el = fsTargetEl();
+    if(!el) return;
+    var cur = parseFloat(getComputedStyle(el).fontSize) || 16;
+    var next = Math.max(10, Math.min(72, Math.round(cur + delta)));
+    el.style.fontSize = next + 'px';
+    if(!CONTENT.textStyles) CONTENT.textStyles = {};
+    CONTENT.textStyles[fsCurrentPath] = next;
+    saveContent();
+    document.getElementById('fsVal').textContent = next + 'px';
+  }
+  document.getElementById('fsMinus').addEventListener('click', function(){ changeFontSize(-1); });
+  document.getElementById('fsPlus').addEventListener('click', function(){ changeFontSize(1); });
+  document.getElementById('fsReset').addEventListener('click', function(){
+    var el = fsTargetEl();
+    if(CONTENT.textStyles && fsCurrentPath) delete CONTENT.textStyles[fsCurrentPath];
+    if(el) el.style.fontSize = '';
+    saveContent();
+    var size = el ? parseFloat(getComputedStyle(el).fontSize) : 16;
+    document.getElementById('fsVal').textContent = Math.round(size||16) + 'px';
+  });
+  document.getElementById('fsClose').addEventListener('click', hideFontTool);
+  document.addEventListener('focusin', function(e){
+    if(!EDIT) return;
+    var t = e.target;
+    if(t && t.dataset && t.dataset.path && t.isContentEditable){ showFontTool(t); }
+  });
+  document.addEventListener('focusout', function(e){
+    var t = e.target;
+    if(!(t && t.dataset && t.dataset.path && t.isContentEditable)) return;
+    setTimeout(function(){
+      var active = document.activeElement;
+      var stillEditable = active && active.dataset && active.dataset.path && active.isContentEditable;
+      var insideTool = active && fontTool.contains(active);
+      if(!stillEditable && !insideTool) hideFontTool();
+    }, 0);
+  });
 
   /* ---------------- inline edit interactions ---------------- */
   document.body.addEventListener('focusout', function(e){
