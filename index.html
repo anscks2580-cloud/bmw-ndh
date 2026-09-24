@@ -506,7 +506,55 @@
   "cardFax": "0504-322-2532",
   "cardEmail": "dohee.noh@bavarian.co.kr",
   "youtubeChannelId": "UCsloMOE4Gl2FfkOnS8svXgA",
-  "videoProxyUrl": ""
+  "videoProxyUrl": "",
+  "heroBtn1": "견적·상담 신청",
+  "heroBtn2": "즉시출고 차량 보기",
+  "navLinkInstock": "즉시출고",
+  "navLinkEv": "보조금",
+  "navLinkService": "서비스센터",
+  "navLinkReviews": "고객 후기",
+  "navLinkContact": "상담·전시장",
+  "navKakaoBtn": "카카오 상담",
+  "navCallBtn": "전화 상담",
+  "trimSectionLabel": "Trim Gallery",
+  "trimSectionTitle": "트림별 실차 사진.",
+  "trimSectionDesc": "모델·트림별로 사진을 등록해두면 고객이 색상/옵션을 미리 확인할 수 있습니다.",
+  "instockSectionLabel": "Ready to Deliver",
+  "instockSectionTitle": "즉시 출고 가능 차량.",
+  "instockSectionDesc": "지금 계약하면 바로 받을 수 있는 재고 차량입니다.",
+  "instockSearchPlaceholder": "모델명으로 검색 (예: 520i, X5)",
+  "evSectionLabel": "EV Subsidy",
+  "evSectionTitle": "지역별 전기차 보조금.",
+  "evColRegion": "지역",
+  "evColNational": "국비",
+  "evColLocal": "지방비",
+  "evColTotal": "합계(BMW 기준)",
+  "evColRemain": "잔여대수",
+  "evOfficialLinkText": "환경부 무공해차 통합누리집에서 실시간 확인 →",
+  "serviceSectionLabel": "Service Center",
+  "serviceSectionTitle": "서비스 센터 입고 신청.",
+  "serviceSectionDesc": "증상과 희망 날짜를 남겨주시면 확인 후 순서대로 연락드립니다.",
+  "serviceFieldModel": "차량 모델 / 트림",
+  "serviceFieldName": "성함",
+  "serviceFieldPhone": "연락처",
+  "serviceFieldIssue": "증상 / 요청사항",
+  "serviceFieldDate": "희망 입고 날짜",
+  "serviceSubmitBtn": "신청 접수하기",
+  "serviceFormNote": "접수하시면 담당자에게 바로 전달되며, 확인 후 연락드립니다.",
+  "reviewsSectionLabel": "Delivery Reviews",
+  "reviewsSectionTitle": "출고 후기.",
+  "contactSectionLabel": "Your SE",
+  "cLabelShowroom": "전시장",
+  "cLabelPhone": "전화",
+  "cLabelKakao": "카카오 상담",
+  "cLabelBooking": "실시간 예약",
+  "cKakaoBtnText": "바로가기",
+  "cBookingBtnText": "바로가기",
+  "seRoleText": "BMW Sales Expert",
+  "footerNote": "본 사이트는 공식 딜러 개인 브랜딩 페이지이며, BMW Korea와 무관합니다.",
+  "ftKakaoText": "카카오 상담",
+  "ftBlogText": "블로그",
+  "adminFabText": "⚙ 관리자"
 }
 </script>
 
@@ -517,11 +565,11 @@
       <span class="name"><b id="hdBrand">노도희</b> BMW</span>
     </a>
     <nav class="links">
-      <a href="#instock">즉시출고</a>
-      <a href="#evsubsidy">보조금</a>
-      <a href="#service">서비스센터</a>
-      <a href="#reviews">고객 후기</a>
-      <a href="#contact">상담·전시장</a>
+      <a href="#instock" id="navLinkInstock">즉시출고</a>
+      <a href="#evsubsidy" id="navLinkEv">보조금</a>
+      <a href="#service" id="navLinkService">서비스센터</a>
+      <a href="#reviews" id="navLinkReviews">고객 후기</a>
+      <a href="#contact" id="navLinkContact">상담·전시장</a>
     </nav>
     <div class="nav-cta">
       <a class="btn btn-ghost" id="navKakao" target="_blank" rel="noopener">카카오 상담</a>
@@ -576,8 +624,8 @@
     <h1 id="heroTitle">당신의 다음 목적지,<br>BMW와 함께.</h1>
     <p class="lead" id="heroLead"></p>
     <div class="hero-actions">
-      <a class="btn btn-primary" href="#contact">견적·상담 신청</a>
-      <a class="btn btn-ghost" href="#instock">즉시출고 차량 보기</a>
+      <a class="btn btn-primary" href="#contact" id="heroBtn1">견적·상담 신청</a>
+      <a class="btn btn-ghost" href="#instock" id="heroBtn2">즉시출고 차량 보기</a>
     </div>
   </div>
 </div>
@@ -594,10 +642,10 @@
   <div class="wrap">
     <div class="section-head">
       <div>
-        <p class="label">Trim Gallery</p>
-        <h2>트림별 실차 사진.</h2>
+        <p class="label" id="trimSectionLabel">Trim Gallery</p>
+        <h2 id="trimSectionTitle">트림별 실차 사진.</h2>
       </div>
-      <p class="desc">모델·트림별로 사진을 등록해두면 고객이 색상/옵션을 미리 확인할 수 있습니다.</p>
+      <p class="desc" id="trimSectionDesc">모델·트림별로 사진을 등록해두면 고객이 색상/옵션을 미리 확인할 수 있습니다.</p>
     </div>
     <div class="models-grid" id="trimGrid"></div>
   </div>
@@ -607,10 +655,10 @@
   <div class="wrap">
     <div class="section-head">
       <div>
-        <p class="label">Ready to Deliver</p>
-        <h2>즉시 출고 가능 차량.</h2>
+        <p class="label" id="instockSectionLabel">Ready to Deliver</p>
+        <h2 id="instockSectionTitle">즉시 출고 가능 차량.</h2>
       </div>
-      <p class="desc">지금 계약하면 바로 받을 수 있는 재고 차량입니다.</p>
+      <p class="desc" id="instockSectionDesc">지금 계약하면 바로 받을 수 있는 재고 차량입니다.</p>
     </div>
     <input type="text" id="instockSearch" placeholder="모델명으로 검색 (예: 520i, X5)" style="width:100%;max-width:360px;padding:10px 14px;border:1px solid var(--line-soft);border-radius:6px;font-size:14px;margin-bottom:16px;">
     <div class="stock-accordion" id="instockGrid"></div>
@@ -621,15 +669,15 @@
   <div class="wrap">
     <div class="section-head">
       <div>
-        <p class="label">EV Subsidy</p>
-        <h2>지역별 전기차 보조금.</h2>
+        <p class="label" id="evSectionLabel">EV Subsidy</p>
+        <h2 id="evSectionTitle">지역별 전기차 보조금.</h2>
       </div>
       <p class="desc" id="evSubsidyDesc"></p>
     </div>
     <div class="contact-card" style="padding:8px 0;overflow-x:auto;">
       <table style="width:100%;border-collapse:collapse;font-size:14px;">
         <thead><tr style="text-align:left;border-bottom:2px solid var(--line-soft);">
-          <th style="padding:14px 24px;">지역</th><th style="padding:14px 24px;">국비</th><th style="padding:14px 24px;">지방비</th><th style="padding:14px 24px;" id="evTotalHead">합계(BMW 기준)</th><th style="padding:14px 24px;">잔여대수</th>
+          <th style="padding:14px 24px;" id="evColRegion">지역</th><th style="padding:14px 24px;" id="evColNational">국비</th><th style="padding:14px 24px;" id="evColLocal">지방비</th><th style="padding:14px 24px;" id="evTotalHead">합계(BMW 기준)</th><th style="padding:14px 24px;" id="evColRemain">잔여대수</th>
         </tr></thead>
         <tbody id="evSubsidyBody"></tbody>
       </table>
@@ -642,22 +690,22 @@
   <div class="wrap">
     <div class="section-head">
       <div>
-        <p class="label" style="color:var(--accent);">Service Center</p>
-        <h2 style="color:#fff;">서비스 센터 입고 신청.</h2>
+        <p class="label" style="color:var(--accent);" id="serviceSectionLabel">Service Center</p>
+        <h2 style="color:#fff;" id="serviceSectionTitle">서비스 센터 입고 신청.</h2>
       </div>
-      <p class="desc" style="color:var(--muted);">증상과 희망 날짜를 남겨주시면 확인 후 순서대로 연락드립니다.</p>
+      <p class="desc" style="color:var(--muted);" id="serviceSectionDesc">증상과 희망 날짜를 남겨주시면 확인 후 순서대로 연락드립니다.</p>
     </div>
     <form id="serviceForm" style="max-width:640px;background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:8px;padding:32px;">
-      <div class="field"><label style="color:#dfe6ee;">차량 모델 / 트림</label><input type="text" name="차량모델" required style="width:100%;padding:11px 12px;border-radius:4px;border:1px solid var(--line);background:rgba(255,255,255,.06);color:#fff;"></div>
-      <div class="field"><label style="color:#dfe6ee;">성함</label><input type="text" name="성함" required style="width:100%;padding:11px 12px;border-radius:4px;border:1px solid var(--line);background:rgba(255,255,255,.06);color:#fff;"></div>
-      <div class="field"><label style="color:#dfe6ee;">연락처</label><input type="text" name="연락처" required style="width:100%;padding:11px 12px;border-radius:4px;border:1px solid var(--line);background:rgba(255,255,255,.06);color:#fff;"></div>
-      <div class="field"><label style="color:#dfe6ee;">증상 / 요청사항</label><textarea name="증상" required style="width:100%;padding:11px 12px;border-radius:4px;border:1px solid var(--line);background:rgba(255,255,255,.06);color:#fff;min-height:100px;"></textarea></div>
-      <div class="field"><label style="color:#dfe6ee;">희망 입고 날짜</label><input type="date" name="희망날짜" required style="width:100%;padding:11px 12px;border-radius:4px;border:1px solid var(--line);background:rgba(255,255,255,.06);color:#fff;"></div>
+      <div class="field"><label style="color:#dfe6ee;" id="serviceFieldModel">차량 모델 / 트림</label><input type="text" name="차량모델" required style="width:100%;padding:11px 12px;border-radius:4px;border:1px solid var(--line);background:rgba(255,255,255,.06);color:#fff;"></div>
+      <div class="field"><label style="color:#dfe6ee;" id="serviceFieldName">성함</label><input type="text" name="성함" required style="width:100%;padding:11px 12px;border-radius:4px;border:1px solid var(--line);background:rgba(255,255,255,.06);color:#fff;"></div>
+      <div class="field"><label style="color:#dfe6ee;" id="serviceFieldPhone">연락처</label><input type="text" name="연락처" required style="width:100%;padding:11px 12px;border-radius:4px;border:1px solid var(--line);background:rgba(255,255,255,.06);color:#fff;"></div>
+      <div class="field"><label style="color:#dfe6ee;" id="serviceFieldIssue">증상 / 요청사항</label><textarea name="증상" required style="width:100%;padding:11px 12px;border-radius:4px;border:1px solid var(--line);background:rgba(255,255,255,.06);color:#fff;min-height:100px;"></textarea></div>
+      <div class="field"><label style="color:#dfe6ee;" id="serviceFieldDate">희망 입고 날짜</label><input type="date" name="희망날짜" required style="width:100%;padding:11px 12px;border-radius:4px;border:1px solid var(--line);background:rgba(255,255,255,.06);color:#fff;"></div>
       <input type="hidden" name="_subject" value="[서비스센터 입고 신청] 새 접수">
       <input type="hidden" name="_captcha" value="true">
       <input type="hidden" name="_next" value="">
-      <button type="submit" class="btn btn-primary" style="width:100%;">신청 접수하기</button>
-      <p style="font-size:12px;color:var(--muted);margin-top:12px;">접수하시면 담당자에게 바로 전달되며, 확인 후 연락드립니다.</p>
+      <button type="submit" class="btn btn-primary" style="width:100%;" id="serviceSubmitBtn">신청 접수하기</button>
+      <p style="font-size:12px;color:var(--muted);margin-top:12px;" id="serviceFormNote">접수하시면 담당자에게 바로 전달되며, 확인 후 연락드립니다.</p>
     </form>
   </div>
 </section>
@@ -666,8 +714,8 @@
   <div class="wrap">
     <div class="section-head">
       <div>
-        <p class="label">Delivery Reviews</p>
-        <h2>출고 후기.</h2>
+        <p class="label" id="reviewsSectionLabel">Delivery Reviews</p>
+        <h2 id="reviewsSectionTitle">출고 후기.</h2>
       </div>
     </div>
     <div class="review-track" id="reviewTrack"></div>
@@ -678,21 +726,21 @@
   <div class="wrap">
     <div class="section-head">
       <div>
-        <p class="label">Your SE</p>
+        <p class="label" id="contactSectionLabel">Your SE</p>
         <h2 id="seName">노도희 드림.</h2>
       </div>
     </div>
     <div class="contact-grid">
       <div class="contact-card">
-        <div class="row"><span class="k">전시장</span><span id="cAddress"></span></div>
-        <div class="row"><span class="k">전화</span><a id="cPhone" href="tel:"></a></div>
-        <div class="row"><span class="k">카카오 상담</span><a id="cKakao" target="_blank" rel="noopener">바로가기</a></div>
-        <div class="row"><span class="k">실시간 예약</span><a id="cBooking" target="_blank" rel="noopener">바로가기</a></div>
+        <div class="row"><span class="k" id="cLabelShowroom">전시장</span><span id="cAddress"></span></div>
+        <div class="row"><span class="k" id="cLabelPhone">전화</span><a id="cPhone" href="tel:"></a></div>
+        <div class="row"><span class="k" id="cLabelKakao">카카오 상담</span><a id="cKakao" target="_blank" rel="noopener">바로가기</a></div>
+        <div class="row"><span class="k" id="cLabelBooking">실시간 예약</span><a id="cBooking" target="_blank" rel="noopener">바로가기</a></div>
       </div>
       <div>
         <div class="se-portrait"><img id="sePortraitImg" src="" alt="담당 SE"></div>
         <p class="se-name" id="seName2"></p>
-        <p class="se-role">BMW Sales Expert</p>
+        <p class="se-role" id="seRole">BMW Sales Expert</p>
         <p class="se-bio" id="seBio"></p>
       </div>
     </div>
@@ -701,7 +749,7 @@
 
 <footer>
   <div class="wrap">
-    <div>© <span id="year"></span> BMW <span id="ftBrand"></span>. 본 사이트는 공식 딜러 개인 브랜딩 페이지이며, BMW Korea와 무관합니다.</div>
+    <div>© <span id="year"></span> BMW <span id="ftBrand"></span>. <span id="footerNote">본 사이트는 공식 딜러 개인 브랜딩 페이지이며, BMW Korea와 무관합니다.</span></div>
     <div class="flinks">
       <a id="ftPhone" href="tel:"></a>
       <a id="ftKakao" target="_blank" rel="noopener" style="display:none;">카카오 상담</a>
@@ -897,6 +945,14 @@
     ['kakaoUrl','instagramUrl','youtubeChannelUrl'].forEach(function(k){ if(!CONTENT[k]) CONTENT[k] = DEFAULT_CONTENT[k]; });
     if(!CONTENT.serviceFormEmail || CONTENT.serviceFormEmail === 'your-email@example.com') CONTENT.serviceFormEmail = DEFAULT_CONTENT.serviceFormEmail;
 
+    var heroB1 = document.getElementById('heroBtn1'); heroB1.textContent = CONTENT.heroBtn1; setEditable(heroB1,'heroBtn1');
+    var heroB2 = document.getElementById('heroBtn2'); heroB2.textContent = CONTENT.heroBtn2; setEditable(heroB2,'heroBtn2');
+    var nvI = document.getElementById('navLinkInstock'); nvI.textContent = CONTENT.navLinkInstock; setEditable(nvI,'navLinkInstock');
+    var nvE = document.getElementById('navLinkEv'); nvE.textContent = CONTENT.navLinkEv; setEditable(nvE,'navLinkEv');
+    var nvS = document.getElementById('navLinkService'); nvS.textContent = CONTENT.navLinkService; setEditable(nvS,'navLinkService');
+    var nvR = document.getElementById('navLinkReviews'); nvR.textContent = CONTENT.navLinkReviews; setEditable(nvR,'navLinkReviews');
+    var nvC = document.getElementById('navLinkContact'); nvC.textContent = CONTENT.navLinkContact; setEditable(nvC,'navLinkContact');
+
     var hd = document.getElementById('hdBrand');
     hd.textContent = CONTENT.brandName; hd.setAttribute && (EDIT ? hd.setAttribute('contenteditable','true') : hd.removeAttribute('contenteditable'));
     hd.dataset.path = 'brandName';
@@ -953,6 +1009,8 @@
       '</div>'
     ) : '';
 
+    var rvL = document.getElementById('reviewsSectionLabel'); rvL.textContent = CONTENT.reviewsSectionLabel; setEditable(rvL,'reviewsSectionLabel');
+    var rvT = document.getElementById('reviewsSectionTitle'); rvT.textContent = CONTENT.reviewsSectionTitle; setEditable(rvT,'reviewsSectionTitle');
     var track = document.getElementById('reviewTrack');
     track.innerHTML = (CONTENT.reviews||[]).map(function(r,i){
       return '<div class="review-card">' + delBtn('reviews',i) + '<div class="stars">★★★★★</div>' +
@@ -970,31 +1028,51 @@
     var oldBtn = seWrap.querySelector('.img-edit-btn'); if(oldBtn) oldBtn.remove();
     if(EDIT){ seWrap.insertAdjacentHTML('beforeend', imgBtn('sePortrait')); }
 
+    var ctL = document.getElementById('contactSectionLabel'); ctL.textContent = CONTENT.contactSectionLabel; setEditable(ctL,'contactSectionLabel');
+    var clS = document.getElementById('cLabelShowroom'); clS.textContent = CONTENT.cLabelShowroom; setEditable(clS,'cLabelShowroom');
+    var clP = document.getElementById('cLabelPhone'); clP.textContent = CONTENT.cLabelPhone; setEditable(clP,'cLabelPhone');
+    var clK = document.getElementById('cLabelKakao'); clK.textContent = CONTENT.cLabelKakao; setEditable(clK,'cLabelKakao');
+    var clB = document.getElementById('cLabelBooking'); clB.textContent = CONTENT.cLabelBooking; setEditable(clB,'cLabelBooking');
+    var seRole = document.getElementById('seRole'); seRole.textContent = CONTENT.seRoleText; setEditable(seRole,'seRoleText');
     var ca = document.getElementById('cAddress'); ca.textContent = CONTENT.address; setEditable(ca,'address');
     var cp = document.getElementById('cPhone');
     cp.textContent = CONTENT.phone; cp.href = 'tel:' + (CONTENT.phone||'').replace(/-/g,''); setEditable(cp,'phone');
-    document.getElementById('cKakao').href = CONTENT.kakaoUrl || '#';
-    document.getElementById('cBooking').href = CONTENT.naverBookingUrl || '#';
+    var cKakaoEl = document.getElementById('cKakao'); cKakaoEl.href = CONTENT.kakaoUrl || '#'; cKakaoEl.textContent = CONTENT.cKakaoBtnText; setEditable(cKakaoEl,'cKakaoBtnText');
+    var cBookingEl = document.getElementById('cBooking'); cBookingEl.href = CONTENT.naverBookingUrl || '#'; cBookingEl.textContent = CONTENT.cBookingBtnText; setEditable(cBookingEl,'cBookingBtnText');
 
-    document.getElementById('navCall').href = 'tel:' + (CONTENT.phone||'').replace(/-/g,'');
+    var navCallBtn = document.getElementById('navCall');
+    navCallBtn.href = 'tel:' + (CONTENT.phone||'').replace(/-/g,'');
+    navCallBtn.textContent = CONTENT.navCallBtn; setEditable(navCallBtn,'navCallBtn');
     var navKakao = document.getElementById('navKakao');
+    navKakao.textContent = CONTENT.navKakaoBtn; setEditable(navKakao,'navKakaoBtn');
     if(CONTENT.kakaoUrl){ navKakao.style.display='inline-block'; navKakao.href = CONTENT.kakaoUrl; } else { navKakao.style.display='none'; }
 
     document.getElementById('year').textContent = new Date().getFullYear();
     document.getElementById('ftBrand').textContent = CONTENT.brandName;
+    var ftNote = document.getElementById('footerNote'); ftNote.textContent = CONTENT.footerNote; setEditable(ftNote,'footerNote');
     var ftPhone = document.getElementById('ftPhone');
     ftPhone.textContent = CONTENT.phone; ftPhone.href = 'tel:' + (CONTENT.phone||'').replace(/-/g,'');
     var ftKakao = document.getElementById('ftKakao');
+    ftKakao.textContent = CONTENT.ftKakaoText; setEditable(ftKakao,'ftKakaoText');
     ftKakao.style.display = CONTENT.kakaoUrl ? 'inline' : 'none'; if(CONTENT.kakaoUrl) ftKakao.href = CONTENT.kakaoUrl;
     var ftBlog = document.getElementById('ftBlog');
+    ftBlog.textContent = CONTENT.ftBlogText; setEditable(ftBlog,'ftBlogText');
     ftBlog.style.display = CONTENT.blogUrl ? 'inline' : 'none'; if(CONTENT.blogUrl) ftBlog.href = CONTENT.blogUrl;
 
+    var trL = document.getElementById('trimSectionLabel'); trL.textContent = CONTENT.trimSectionLabel; setEditable(trL,'trimSectionLabel');
+    var trT = document.getElementById('trimSectionTitle'); trT.textContent = CONTENT.trimSectionTitle; setEditable(trT,'trimSectionTitle');
+    var trD = document.getElementById('trimSectionDesc'); trD.textContent = CONTENT.trimSectionDesc; setEditable(trD,'trimSectionDesc');
     document.getElementById('trimGrid').innerHTML = (CONTENT.trimGalleries||[]).map(function(t,i){
       return '<div class="model-card">' + delBtn('trimGalleries',i) +
         '<div class="imgwrap"><img src="'+esc(t.img)+'" alt="'+esc(t.model)+' '+esc(t.trim)+'">'+imgBtn('trimGalleries.'+i+'.img')+'</div>' +
         '<div class="info"><div class="series"'+ed('trimGalleries.'+i+'.model')+'>'+esc(t.model)+'</div>' +
         '<h3'+ed('trimGalleries.'+i+'.trim')+'>'+esc(t.trim)+'</h3></div></div>';
     }).join('') + addTile('trimGalleries','트림 사진');
+
+    var isL = document.getElementById('instockSectionLabel'); isL.textContent = CONTENT.instockSectionLabel; setEditable(isL,'instockSectionLabel');
+    var isT = document.getElementById('instockSectionTitle'); isT.textContent = CONTENT.instockSectionTitle; setEditable(isT,'instockSectionTitle');
+    var isD = document.getElementById('instockSectionDesc'); isD.textContent = CONTENT.instockSectionDesc; setEditable(isD,'instockSectionDesc');
+    document.getElementById('instockSearch').placeholder = CONTENT.instockSearchPlaceholder;
 
     (function renderInStockGrouped(){
       var groups = {}; // series -> model -> [{idx, extColor, intColor}]
@@ -1032,8 +1110,16 @@
       document.getElementById('instockGrid').innerHTML = html + addTile('inStock','재고 차량 (직접 추가)');
     })();
 
+    var evL = document.getElementById('evSectionLabel'); evL.textContent = CONTENT.evSectionLabel; setEditable(evL,'evSectionLabel');
+    var evT = document.getElementById('evSectionTitle'); evT.textContent = CONTENT.evSectionTitle; setEditable(evT,'evSectionTitle');
     var evd = document.getElementById('evSubsidyDesc'); evd.textContent = CONTENT.evSubsidyNote; setEditable(evd,'evSubsidyNote',true);
     var evu = document.getElementById('evSubsidyUpdated'); evu.textContent = CONTENT.evSubsidyUpdated; setEditable(evu,'evSubsidyUpdated');
+    var evCR = document.getElementById('evColRegion'); evCR.textContent = CONTENT.evColRegion; setEditable(evCR,'evColRegion');
+    var evCN = document.getElementById('evColNational'); evCN.textContent = CONTENT.evColNational; setEditable(evCN,'evColNational');
+    var evCL = document.getElementById('evColLocal'); evCL.textContent = CONTENT.evColLocal; setEditable(evCL,'evColLocal');
+    var evCT = document.getElementById('evTotalHead'); evCT.textContent = CONTENT.evColTotal; setEditable(evCT,'evColTotal');
+    var evCRm = document.getElementById('evColRemain'); evCRm.textContent = CONTENT.evColRemain; setEditable(evCRm,'evColRemain');
+    var evOL = document.getElementById('evOfficialLink'); evOL.textContent = CONTENT.evOfficialLinkText; setEditable(evOL,'evOfficialLinkText');
     document.getElementById('evOfficialLink').href = CONTENT.evOfficialUrl || 'https://www.ev.or.kr';
     // 지역별 모델 목록 (MINI 제외)
     var evByRegion = {};
@@ -1075,6 +1161,17 @@
       addRowBtn.textContent = '+ 지역 추가';
       evTable.parentElement.appendChild(addRowBtn);
     }
+
+    var svL = document.getElementById('serviceSectionLabel'); svL.textContent = CONTENT.serviceSectionLabel; setEditable(svL,'serviceSectionLabel');
+    var svT = document.getElementById('serviceSectionTitle'); svT.textContent = CONTENT.serviceSectionTitle; setEditable(svT,'serviceSectionTitle');
+    var svD = document.getElementById('serviceSectionDesc'); svD.textContent = CONTENT.serviceSectionDesc; setEditable(svD,'serviceSectionDesc');
+    var svFM = document.getElementById('serviceFieldModel'); svFM.textContent = CONTENT.serviceFieldModel; setEditable(svFM,'serviceFieldModel');
+    var svFN = document.getElementById('serviceFieldName'); svFN.textContent = CONTENT.serviceFieldName; setEditable(svFN,'serviceFieldName');
+    var svFP = document.getElementById('serviceFieldPhone'); svFP.textContent = CONTENT.serviceFieldPhone; setEditable(svFP,'serviceFieldPhone');
+    var svFI = document.getElementById('serviceFieldIssue'); svFI.textContent = CONTENT.serviceFieldIssue; setEditable(svFI,'serviceFieldIssue');
+    var svFD = document.getElementById('serviceFieldDate'); svFD.textContent = CONTENT.serviceFieldDate; setEditable(svFD,'serviceFieldDate');
+    var svSB = document.getElementById('serviceSubmitBtn'); svSB.textContent = CONTENT.serviceSubmitBtn; setEditable(svSB,'serviceSubmitBtn');
+    var svFNote = document.getElementById('serviceFormNote'); svFNote.textContent = CONTENT.serviceFormNote; setEditable(svFNote,'serviceFormNote');
 
     var svcForm = document.getElementById('serviceForm');
     if(svcForm && CONTENT.serviceFormEmail){
@@ -1195,8 +1292,7 @@
     return '<div class="modal-head"><h3>관리자 로그인</h3><button class="modal-close" id="lockClose">×</button></div>' +
       '<div class="lock-body"><p>비밀번호를 입력하면 실제 화면에서 바로 사진과 글, 가격을 수정할 수 있습니다.</p>' +
       '<input type="password" id="pwInput" placeholder="비밀번호" style="width:100%;padding:12px;border:1px solid #d7d5cc;border-radius:6px;font-size:14px;margin-bottom:14px;">' +
-      '<button class="btn btn-dark" id="pwSubmit" style="width:100%;">입장</button>' +
-      '<p style="font-size:11.5px;color:#999;margin-top:14px;">최초 비밀번호: admin1234 (입장 후 설정에서 변경 가능)</p></div>';
+      '<button class="btn btn-dark" id="pwSubmit" style="width:100%;">입장</button></div>';
   }
   function wireLock(){
     document.getElementById('lockClose').addEventListener('click', closeModal);
